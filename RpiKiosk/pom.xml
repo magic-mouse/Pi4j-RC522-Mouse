@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kvedro.kiosk</groupId>
+    <artifactId>RpiKiosk</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.kvedro.RC522</groupId>-->
+            <!--<artifactId>MeetingBooking</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.kvedro.rc522</groupId>
+            <artifactId>MeetingBooking</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${local.repository.folder}/com/kvedro/rc522/MeetingBooking/1.0-SNAPSHOT/MeetingBooking-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+
+
+
+
+    <properties>
+        <local.repository.folder>/home/mouse/.m2/repository</local.repository.folder>
+    </properties>
+
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>local-maven-repository</id>-->
+            <!--<url>/home/mouse/.m2/repository</url>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
+</project>
