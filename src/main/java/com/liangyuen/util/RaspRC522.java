@@ -1,4 +1,5 @@
 package com.liangyuen.util;
+
 import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.Spi;
 /**
@@ -10,9 +11,9 @@ public class RaspRC522
     private int Speed=500000;
     private int SPI_Channel=0;
 
-    private final int MAX_LEN = 16; //ÉÈÇø×Ö½ÚÊý
+    private final int MAX_LEN = 16; //ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
 
-    //RC522ÃüÁî×Ö
+    //RC522ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static final byte PCD_IDLE       = 0x00;
     public static final byte PCD_AUTHENT    = 0x0E;
     public static final byte PCD_RECEIVE    = 0x08;
@@ -21,7 +22,7 @@ public class RaspRC522
     public static final byte PCD_RESETPHASE = 0x0F;
     public static final byte PCD_CALCCRC    = 0x03;
 
-    //PICCÃüÁî×Ö
+    //PICCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public  static final byte PICC_REQIDL    = 0x26;
     public  static final byte PICC_REQALL    = 0x52;
     public  static final byte PICC_ANTICOLL  = (byte)0x93;
@@ -36,12 +37,12 @@ public class RaspRC522
     public  static final byte PICC_TRANSFER  = (byte)0xB0;
     public  static final byte PICC_HALT      = 0x50;
 
-    //·µ»Ø×´Ì¬
+    //ï¿½ï¿½ï¿½ï¿½×´Ì¬
     public static final int MI_OK       = 0;
     public static final int MI_NOTAGERR = 1;
     public static final int MI_ERR      = 2;
 
-    //RC522¼Ä´æÆ÷µØÖ·
+    //RC522ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
     public static final byte Reserved00     = 0x00;
     public static final byte CommandReg     = 0x01;
     public static final byte CommIEnReg     = 0x02;
@@ -206,10 +207,10 @@ public class RaspRC522
         ClearBitMask(TxControlReg,(byte) 0x03);
     }
 
-    //back_data-×î³¤²»³¬¹ýLength=16;
-    //back_data-·µ»ØÊý¾Ý
-    //back_bits-·µ»Ø±ÈÌØÊý
-    //backLen-·µ»Ø×Ö½ÚÊý
+    //back_data-ï¿½î³¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Length=16;
+    //back_data-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //back_bits-ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
+    //backLen-ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
     private int Write_Card(byte command,byte []data,int dataLen,byte[]back_data,int[]back_bits,int[]backLen)
     {
         int status=MI_ERR;
@@ -283,7 +284,7 @@ public class RaspRC522
         return  status;
     }
 
-    public int Request(byte req_mode,int []back_bits) //²ÎÊýÎª1×Ö½ÚÊý×é
+    public int Request(byte req_mode,int []back_bits) //ï¿½ï¿½ï¿½ï¿½Îª1ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         int status;
         byte tagType[]=new byte[1];
@@ -306,11 +307,11 @@ public class RaspRC522
 
     //Anti-collision detection.
     //Returns tuple of (error state, tag ID).
-    //back_data-5×Ö½Ú 4×Ö½Útagid+1×Ö½ÚÐ£Ñé
+    //back_data-5ï¿½Ö½ï¿½ 4ï¿½Ö½ï¿½tagid+1ï¿½Ö½ï¿½Ð£ï¿½ï¿½
     public int AntiColl(byte[]back_data)
     {
         int status;
-        byte []serial_number = new byte[2];   //2×Ö½ÚÃüÁî
+        byte []serial_number = new byte[2];   //2ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½
         int serial_number_check = 0;
         int backLen[]=new int[1];
         int back_bits[]=new int[1];
@@ -341,7 +342,7 @@ public class RaspRC522
         return status;
     }
 
-    //CRCÖµ·ÅÔÚdata[]×îºóÁ½×Ö½Ú
+    //CRCÖµï¿½ï¿½ï¿½ï¿½data[]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½
     private void Calculate_CRC(byte []data)
     {
         int i,n;
@@ -363,8 +364,8 @@ public class RaspRC522
         data[data.length-1]=Read_RC522(CRCResultRegM);
     }
 
-    //uid-5×Ö½ÚÊý×é,´æ·ÅÐòÁÐºÅ
-    //·µÖµÊÇ´óÐ¡
+    //uid-5ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðºï¿½
+    //ï¿½ï¿½Öµï¿½Ç´ï¿½Ð¡
     public int Select_Tag(byte []uid)
     {
         int status;
@@ -387,7 +388,7 @@ public class RaspRC522
     //Authenticates to use specified block address. Tag must be selected using select_tag(uid) before auth.
     //auth_mode-RFID.auth_a or RFID.auth_b
     //block_address- used to authenticate
-    //key-list or tuple(Êý×é) with six bytes key
+    //key-list or tuple(ï¿½ï¿½ï¿½ï¿½) with six bytes key
     //uid-list or tuple with four bytes tag ID
     public int Auth_Card(byte auth_mode,byte block_address,byte []key,byte []uid)
     {
@@ -487,7 +488,7 @@ public class RaspRC522
         return Write(Sector2BlockAddress(sector,block),data);
     }
 
-    //µ¼³ö1K×Ö½Ú,64¸öÉÈÇø
+    //ï¿½ï¿½ï¿½ï¿½1Kï¿½Ö½ï¿½,64ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public byte[] DumpClassic1K(byte []key, byte[]uid)
     {
         int i,status;

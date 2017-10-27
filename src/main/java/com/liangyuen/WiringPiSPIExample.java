@@ -1,12 +1,11 @@
-package com.liangyuen.idea.raspberryRFID;
+package com.liangyuen;
+
+import com.liangyuen.util.Convert;
+import com.liangyuen.util.RaspRC522;
 
 /**
  * Created by Liang on 2016/3/13.
  */
-
-
-import com.liangyuen.util.RaspRC522;
-import com.liangyuen.util.Convert;
 
 
 public class WiringPiSPIExample

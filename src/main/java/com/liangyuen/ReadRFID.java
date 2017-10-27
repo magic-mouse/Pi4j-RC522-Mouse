@@ -1,14 +1,9 @@
-package com.liangyuen.idea.raspberryRFID;
+package com.liangyuen;
 
-/**
- * Created by Liang on 2016/3/7.
- */
 import com.liangyuen.util.Convert;
-import com.liangyuen.util.*;
-import com.pi4j.io.gpio.RaspiPin;
-import com.pi4j.wiringpi.Gpio;
+import com.liangyuen.util.RaspRC522;
 import com.pi4j.wiringpi.Spi;
-import com.liangyuen.util.FMRC522;
+
 public class ReadRFID
 {
     public static void main(String[] args) throws InterruptedException
